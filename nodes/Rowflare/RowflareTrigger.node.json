@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-rowflare.rowflareTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Data & Storage", "Productivity"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/rowflare/n8n-nodes-rowflare?tab=readme-ov-file#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/rowflare/n8n-nodes-rowflare?tab=readme-ov-file"
+			}
+		]
+	}
+}
