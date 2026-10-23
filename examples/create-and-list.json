@@ -1,0 +1,110 @@
+{
+  "name": "Rowflare: create a record and list records",
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "create-record",
+      "name": "Create Record",
+      "type": "n8n-nodes-rowflare.rowflare",
+      "typeVersion": 1,
+      "position": [
+        400,
+        0
+      ],
+      "parameters": {
+        "resource": "record",
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "dataMode": "json",
+        "fieldsJson": "={{ JSON.stringify({ Name: 'Created from n8n' }) }}",
+        "options": {}
+      },
+      "credentials": {
+        "rowflareApi": {
+          "id": "",
+          "name": "Rowflare account"
+        }
+      }
+    },
+    {
+      "id": "find-record",
+      "name": "List Records",
+      "type": "n8n-nodes-rowflare.rowflare",
+      "typeVersion": 1,
+      "position": [
+        800,
+        0
+      ],
+      "parameters": {
+        "resource": "record",
+        "operation": "getAll",
+        "base": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "returnAll": false,
+        "limit": 5,
+        "options": {}
+      },
+      "credentials": {
+        "rowflareApi": {
+          "id": "",
+          "name": "Rowflare account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Create Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Record": {
+      "main": [
+        [
+          {
+            "node": "List Records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
